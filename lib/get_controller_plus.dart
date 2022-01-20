@@ -146,6 +146,10 @@ abstract class GetxControllerPlus extends GetxController
   final _isLoading = false.obs;
   final Map<String, Rx<bool>> _extraIsLoadings = {};
 
+  Type _typeOf<T>() {
+    return T;
+  }
+
   ///
   /// Provides a [handler] Function to handle any calls from [handleError].
   /// Handles [T] which is error-like object which is typically thrown by
@@ -156,7 +160,7 @@ abstract class GetxControllerPlus extends GetxController
   ///
   @override
   void setErrorHandler<T>(ErrorHandlerCallback<T> handler) {
-    final Type type = <T>() { return T; }();
+    final Type type = _typeOf<T>();
     _errorHandlers[type] = handler;
   }
 
@@ -167,7 +171,8 @@ abstract class GetxControllerPlus extends GetxController
   @override
   @protected
   FutureOr<void> handleError(Object err,) {
-    final handler = _errorHandlers[err.runtimeType];
+    final type = err.runtimeType;
+    final handler = _errorHandlers[type];
     if (handler is Function) {
       handler(err);
     }

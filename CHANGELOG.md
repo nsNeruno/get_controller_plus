@@ -1,3 +1,7 @@
+## 0.1.1
+
+* Adjusted type detection for Error handlers
+
 ## 0.1.0
 
 * Improved type detection for Error handlers
