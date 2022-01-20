@@ -47,7 +47,7 @@ abstract class ErrorHandler {
   /// - GetxController onInit/onReady
   /// - GetView/StatelessWidget build implementation
   ///
-  void setErrorHandler<T>(Function handler,);
+  void setErrorHandler<T>(ErrorHandlerCallback<T> handler,);
 
   ///
   /// Typically invoked within catch block inside GetxController codes.
@@ -63,3 +63,5 @@ abstract class ErrorHandler {
   @protected
   FutureOr<void> handleError(Object err,);
 }
+
+typedef ErrorHandlerCallback<T> = FutureOr Function(T);
