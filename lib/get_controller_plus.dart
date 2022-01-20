@@ -156,7 +156,8 @@ abstract class GetxControllerPlus extends GetxController
   ///
   @override
   void setErrorHandler<T>(ErrorHandlerCallback<T> handler) {
-    _errorHandlers[T.runtimeType] = handler as ErrorHandlerCallback<dynamic>;
+    final Type type = <T>() { return T; }();
+    _errorHandlers[type] = handler;
   }
 
   /// **_PROTECTED_**
@@ -166,10 +167,13 @@ abstract class GetxControllerPlus extends GetxController
   @override
   @protected
   FutureOr<void> handleError(Object err,) {
-    _errorHandlers[err.runtimeType]?.call(err);
+    final handler = _errorHandlers[err.runtimeType];
+    if (handler is Function) {
+      handler(err);
+    }
   }
 
-  final Map<Type, ErrorHandlerCallback> _errorHandlers = {};
+  final Map<Type, dynamic> _errorHandlers = {};
 
   ///
   /// Disposes resources as usual in a typical [onClose] event.
