@@ -1,6 +1,6 @@
 name: get_controller_plus
 description: Extension of GetxController from GetX package with support Widgets.
-version: 0.2.0
+version: 0.2.1
 homepage: https://github.com/nsNeruno/get_controller_plus
 
 environment:

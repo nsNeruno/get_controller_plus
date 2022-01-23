@@ -1,3 +1,7 @@
+## 0.2.1
+
+* Updated type signature for `defaultErrorHandlers`
+
 ## 0.2.0
 
 * Added static setter `defaultErrorHandlers` to set default handlers

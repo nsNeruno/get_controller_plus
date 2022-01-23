@@ -178,14 +178,14 @@ abstract class GetxControllerPlus extends GetxController
     }
   }
 
-  static Map<Type, dynamic> _defaultErrorHandlers = {};
+  static Map<Type, ErrorHandlerCallback<dynamic>> _defaultErrorHandlers = {};
 
   ///
   /// Sets a default set of Error Handlers which is preferable scenarios like:
   /// - One time declaration for usage thorough the app
   /// - A fallback handler for a generic error type
   ///
-  static set defaultErrorHandlers(Map<Type, dynamic> handlers,) =>
+  static set defaultErrorHandlers(Map<Type, ErrorHandlerCallback<dynamic>> handlers,) =>
       _defaultErrorHandlers = handlers;
 
   final Map<Type, dynamic> _errorHandlers = {};
