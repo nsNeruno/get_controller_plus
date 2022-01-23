@@ -1,3 +1,7 @@
+## 0.2.0
+
+* Added static setter `defaultErrorHandlers` to set default handlers
+
 ## 0.1.1
 
 * Adjusted type detection for Error handlers

@@ -172,11 +172,21 @@ abstract class GetxControllerPlus extends GetxController
   @protected
   FutureOr<void> handleError(Object err,) {
     final type = err.runtimeType;
-    final handler = _errorHandlers[type];
+    final handler = _errorHandlers[type] ?? _defaultErrorHandlers[type];
     if (handler is Function) {
       handler(err);
     }
   }
+
+  static Map<Type, dynamic> _defaultErrorHandlers = {};
+
+  ///
+  /// Sets a default set of Error Handlers which is preferable scenarios like:
+  /// - One time declaration for usage thorough the app
+  /// - A fallback handler for a generic error type
+  ///
+  static set defaultErrorHandlers(Map<Type, dynamic> handlers,) =>
+      _defaultErrorHandlers = handlers;
 
   final Map<Type, dynamic> _errorHandlers = {};
 
